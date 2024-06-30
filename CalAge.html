@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <!--Using Internal CSS for Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;         
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: whitesmoke;
+        }
+        label {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            color: whitesmoke;
+        }
+        input[type="date"] {
+            padding: 10px 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 60px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p#ageResult {
+            color: whitesmoke;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        /* Add colorful background */
+        body {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!--This is the Body in which I have used Button and some heading and paragraph Tags on Button I have applied
+    Javascript-->
+    <h1>Age Calculator</h1>
+    <label for="dob">Date of Birth</label><br>
+    <input type="date" id="dob"><br>
+    <button onclick="calculateAge()">Calculate Age</button>
+    <p id="ageResult"></p>
+<!--By Using Onclick Command first we will declare the Id of the Each of the Following Fields 
+    Than Create a Const Variable for The Input value of Date of Birth
+    Than Create a New Value of Date <--This will identify the Current Date and Time
+    Than Compare if the The DOB is with the Current Date and Time 
+-->
+     <script>
+      
+         function calculateAge() {
+            const dobInput = document.getElementById('dob');
+            const dob = new Date(dobInput.value);
+            const currdat = new Date();
+            let age = currdat.getFullYear() - dob.getFullYear();
+
+            if (currdat.getMonth() < dob.getMonth() || (currdat.getMonth() === dob.getMonth() && currdat.getDate() < dob.getDate() && currdat.getDay() < dob.getDay())) {
+                age--;
+            }
+            
+                document.getElementById('ageResult').textContent = `You're Age is ${age}`;
+           }
+    </script>
+</body>
+</html>
